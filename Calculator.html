@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Kalkulator Day 2</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        table {
+            margin: auto;
+        }
+        input[type="text"] {
+            width: 100%;
+            height: 50px;
+            font-size: 24px;
+            text-align: right;
+        }
+        button {
+            width: 60px;
+            height: 60px;
+            font-size: 18px;
+            margin: 2px;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <tr>
+            <td colspan="5">
+                <input type="text" id="display" placeholder="0">
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2"><button onclick="clearAll()">AC</button></td>
+            <td><button onclick="clearEntry()">C</button></td>
+            <td><button onclick="append('*')">*</button></td>
+        </tr>
+        <tr>
+            <td><button onclick="append('7')">7</button></td>
+            <td><button onclick="append('8')">8</button></td>
+            <td><button onclick="append('9')">9</button></td>
+            <td><button onclick="append('/')">/</button></td>
+        </tr>
+        <tr>
+            <td><button onclick="append('4')">4</button></td>
+            <td><button onclick="append('5')">5</button></td>
+            <td><button onclick="append('6')">6</button></td>
+            <td><button onclick="append('+')">+</button></td>
+        </tr>
+        <tr>
+            <td><button onclick="append('1')">1</button></td>
+            <td><button onclick="append('2')">2</button></td>
+            <td><button onclick="append('3')">3</button></td>
+            <td><button onclick="append('-')">-</button></td>
+        </tr>
+        <tr>
+            <td><button onclick="toggleSign()">+/-</button></td>
+            <td><button onclick="append('0')">0</button></td>
+            <td><button onclick="append('.')">.</button></td>
+            <td><button onclick="calculate()">=</button></td>
+        </tr>
+    </table>
+    <script>
+        const display = document.getElementById("display");
+
+        function append(value) {
+            display.value += value;
+        }
+
+        function clearAll() {
+            display.value = "";
+        }
+
+        function clearEntry() {
+            display.value = display.value.slice(0, -1);
+        }
+
+        function toggleSign() {
+            if (display.value) {
+                if (display.value.startsWith('-')) {
+                    display.value = display.value.slice(1);
+                } else {
+                    display.value = '-' + display.value;
+                }
+            }
+        }
+
+        function calculate() {
+            try {
+                display.value = eval(display.value);
+            } catch {
+                display.value = "Error";
+            }
+        }
+
+        // 🔑 Keyboard input support
+        display.addEventListener("keydown", function(e) {
+            const allowedKeys = "0123456789/*-+().";
+            if (e.key === "Enter") {
+                e.preventDefault();
+                calculate();
+            } else if (e.key === "Backspace") {
+                // allow default
+            } else if (!allowedKeys.includes(e.key)) {
+                e.preventDefault();
+            }
+        });
+    </script>
+</body>
+</html>
