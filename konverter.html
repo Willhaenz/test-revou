@@ -1,0 +1,39 @@
+<DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Website Konversi Suhu</title>
+</head>
+<body>
+
+  <div class="container">
+    <h2>Masukkan suhu derajat Celcius (°C) ke kotak dibawah...</h2>
+
+    <label for="celcius">Celcius (°C):</label>
+    <input type="text" id="celcius" placeholder="Contoh: 25">
+
+    <button class="konversi-btn" onclick="convertTemperature()">Konversi</button>
+    <button class="reset-btn" onclick="resetForm()">Reset</button>
+    <button class="reverse-btn" onclick="reverseConversion()">Reverse</button>
+
+    <label for="fahrenheit">Fahrenheit (°F):</label>
+    <textarea id="fahrenheit" rows="2" readonly></textarea>
+
+    <label for="penjelasan">Penjelasan:</label>
+    <textarea id="penjelasan" rows="3" readonly></textarea>
+
+    <div class="rumus">
+      <h3><strong>Cara Konversi Celcius (°C) ke Fahrenheit (°F)</strong></h3>
+      <p>Introduction dari rumus konversi suhu...</p>
+      <p><strong>S(°F) = (S(°C) × 9/5) + 32</strong></p>
+      <p>Atau</p>
+      <p><strong>S(°F) = (S(°C) × 1.8) + 32</strong></p>
+    </div>
+
+    <footer>© 2025 @willhaenz</footer>
+  </div>
+
+  <script src="js/konverter.js"></script>
+</body>
+</html>
